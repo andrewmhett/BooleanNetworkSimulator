@@ -1,0 +1,8 @@
+{"category": "COMPONENT", "id": 4, "type": "AND", "x": 500, "y": 383}
+{"category": "COMPONENT", "id": 8, "type": "AND", "x": 824.8000000000005, "y": 471.00000000000034}
+{"category": "CONNECTION_POINT", "id": 1, "io": "INPUT", "parent_id": 4}
+{"category": "CONNECTION_POINT", "id": 2, "io": "INPUT", "parent_id": 4}
+{"category": "CONNECTION_POINT", "id": 3, "io": "OUTPUT", "parent_id": 4}
+{"category": "CONNECTION_POINT", "id": 5, "io": "INPUT", "parent_id": 8}
+{"category": "CONNECTION_POINT", "id": 6, "io": "INPUT", "parent_id": 8}
+{"category": "CONNECTION_POINT", "id": 7, "io": "OUTPUT", "parent_id": 8}

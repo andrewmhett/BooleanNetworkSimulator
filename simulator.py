@@ -1,5 +1,15 @@
+import sys
+import json
+
+if len(sys.argv[1:])>1:
+    print("Only one argument accepted as SAVE_PATH.")
+    exit(-1)
+
 import drawing
 import asyncio
+
+if len(sys.argv[1:])==1:
+    drawing.save_path=sys.argv[1]
 
 def button_simulate(self):
     if self.pressed:
@@ -33,6 +43,77 @@ drawing.NOR.simulate=nor_simulate
 drawing.NAND.simulate=nand_simulate
 drawing.NOT.simulate=not_simulate
 
+def save(filename):
+    if "." in filename:
+        filename=filename.split(".")[0]
+    filename+=".txt"
+    with open("saves/{0}".format(filename),"w+") as f:
+        for component in drawing.components:
+            json.dump(component.dump(),f)
+            f.write("\n")
+        for conn_point in drawing.conn_points:
+            json.dump(conn_point.dump(),f)
+            f.write("\n")
+        for connection in drawing.connections:
+            json.dump(connection.dump(),f)
+            f.write("\n")
+        f.close()
+
+def load(filename):
+    if "." in filename:
+        filename=filename.split(".")[0]
+    filename+=".txt"
+    components=[]
+    conn_points=[]
+    connections=[]
+    with open("saves/{0}".format(filename),"r") as f:
+        for line in f:
+            j=json.loads(line)
+            if j['category']=="COMPONENT":
+                components.append(j)
+            if j['category']=="CONNECTION_POINT":
+                conn_points.append(j)
+            if j['category']=="CONNECTION":
+                connections.append(j)
+        f.close()
+    typeStringLookup={
+        "AND":drawing.AND,
+        "OR":drawing.OR,
+        "NOT":drawing.NOT,
+        "NOR":drawing.NOR,
+        "NAND":drawing.NAND,
+        "BUTTON":drawing.BUTTON,
+        "HIGH_BIT":drawing.HIGH_BIT
+    }
+    input_counter={}
+    output_counter={}
+    for component in components:
+        typeStringLookup[component['type']](component['x'],component['y'],id=component['id'])
+        input_counter[component['id']]=0
+        output_counter[component['id']]=0
+    for component in drawing.components:
+        for conn_point in conn_points:
+            if component.id==conn_point['parent_id']:
+                if conn_point['io']=="INPUT":
+                    component.inputs[input_counter[component.id]].id=conn_point['id']
+                    input_counter[component.id]+=1
+                if conn_point['io']=="OUTPUT":
+                    component.outputs[output_counter[component.id]].id=conn_point['id']
+                    output_counter[component.id]+=1
+    for connection in connections:
+        for conn_point in drawing.conn_points:
+            if conn_point.id == connection['p1_id']:
+                p1=conn_point
+            if conn_point.id == connection['p2_id']:
+                p2=conn_point 
+        drawing.Connection(p1,p2,id=connection['id'])
+
+if drawing.save_path != None:
+    load(drawing.save_path)
+
+drawing.load_callback=load
+drawing.save_callback=save
+
 async def simulate_loop():
     while True:
         for connection in drawing.connections:
@@ -54,7 +135,7 @@ async def simulate_loop():
                 in_connector.state=on
         for component in drawing.components:
             component.simulate()
-        await asyncio.sleep(3/drawing.framerate)
+        await asyncio.sleep(1/drawing.framerate)
 
 asyncio.get_event_loop().create_task(simulate_loop())
 asyncio.get_event_loop().create_task(drawing.update_loop())

@@ -1,0 +1,28 @@
+{"category": "COMPONENT", "id": 4, "type": "AND", "x": 1180.0, "y": 637.4000000000009}
+{"category": "COMPONENT", "id": 6, "type": "HIGH_BIT", "x": 349.60000000000014, "y": 639.0000000000006}
+{"category": "COMPONENT", "id": 9, "type": "BUTTON", "x": 632.8000000000005, "y": 717.4000000000011}
+{"category": "COMPONENT", "id": 12, "type": "BUTTON", "x": 631.2000000000002, "y": 563.8000000000012}
+{"category": "COMPONENT", "id": 18, "type": "NAND", "x": 893.5999999999999, "y": 718.400000000001}
+{"category": "COMPONENT", "id": 22, "type": "OR", "x": 893.6000000000001, "y": 564.8000000000009}
+{"category": "CONNECTION_POINT", "id": 1, "io": "INPUT", "parent_id": 4}
+{"category": "CONNECTION_POINT", "id": 2, "io": "INPUT", "parent_id": 4}
+{"category": "CONNECTION_POINT", "id": 3, "io": "OUTPUT", "parent_id": 4}
+{"category": "CONNECTION_POINT", "id": 5, "io": "OUTPUT", "parent_id": 6}
+{"category": "CONNECTION_POINT", "id": 7, "io": "INPUT", "parent_id": 9}
+{"category": "CONNECTION_POINT", "id": 8, "io": "OUTPUT", "parent_id": 9}
+{"category": "CONNECTION_POINT", "id": 10, "io": "INPUT", "parent_id": 12}
+{"category": "CONNECTION_POINT", "id": 11, "io": "OUTPUT", "parent_id": 12}
+{"category": "CONNECTION_POINT", "id": 15, "io": "INPUT", "parent_id": 18}
+{"category": "CONNECTION_POINT", "id": 16, "io": "INPUT", "parent_id": 18}
+{"category": "CONNECTION_POINT", "id": 17, "io": "OUTPUT", "parent_id": 18}
+{"category": "CONNECTION_POINT", "id": 19, "io": "INPUT", "parent_id": 22}
+{"category": "CONNECTION_POINT", "id": 20, "io": "INPUT", "parent_id": 22}
+{"category": "CONNECTION_POINT", "id": 21, "io": "OUTPUT", "parent_id": 22}
+{"category": "CONNECTION", "id": 13, "p1_id": 5, "p2_id": 10}
+{"category": "CONNECTION", "id": 14, "p1_id": 5, "p2_id": 7}
+{"category": "CONNECTION", "id": 23, "p1_id": 21, "p2_id": 1}
+{"category": "CONNECTION", "id": 24, "p1_id": 17, "p2_id": 2}
+{"category": "CONNECTION", "id": 25, "p1_id": 11, "p2_id": 19}
+{"category": "CONNECTION", "id": 26, "p1_id": 11, "p2_id": 15}
+{"category": "CONNECTION", "id": 27, "p1_id": 8, "p2_id": 20}
+{"category": "CONNECTION", "id": 28, "p1_id": 8, "p2_id": 16}
