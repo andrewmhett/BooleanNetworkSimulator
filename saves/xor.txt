@@ -1,9 +1,10 @@
-{"category": "COMPONENT", "id": 4, "type": "AND", "x": 1180.0, "y": 637.4000000000009}
+{"scale_factor": 1.6, "x_offset": 17, "y_offset": 12}
+{"category": "COMPONENT", "id": 4, "type": "AND", "x": 1178.4, "y": 637.4000000000009}
 {"category": "COMPONENT", "id": 6, "type": "HIGH_BIT", "x": 349.60000000000014, "y": 639.0000000000006}
-{"category": "COMPONENT", "id": 9, "type": "BUTTON", "x": 632.8000000000005, "y": 717.4000000000011}
+{"category": "COMPONENT", "id": 9, "type": "BUTTON", "x": 631.2000000000005, "y": 717.4000000000011}
 {"category": "COMPONENT", "id": 12, "type": "BUTTON", "x": 631.2000000000002, "y": 563.8000000000012}
-{"category": "COMPONENT", "id": 18, "type": "NAND", "x": 893.5999999999999, "y": 718.400000000001}
-{"category": "COMPONENT", "id": 22, "type": "OR", "x": 893.6000000000001, "y": 564.8000000000009}
+{"category": "COMPONENT", "id": 18, "type": "NAND", "x": 891.9999999999999, "y": 718.400000000001}
+{"category": "COMPONENT", "id": 22, "type": "OR", "x": 890.4000000000001, "y": 563.2000000000008}
 {"category": "CONNECTION_POINT", "id": 1, "io": "INPUT", "parent_id": 4}
 {"category": "CONNECTION_POINT", "id": 2, "io": "INPUT", "parent_id": 4}
 {"category": "CONNECTION_POINT", "id": 3, "io": "OUTPUT", "parent_id": 4}

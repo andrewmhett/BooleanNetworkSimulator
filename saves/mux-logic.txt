@@ -1,0 +1,235 @@
+{"scale_factor": 3.117947360000002, "x_offset": 26, "y_offset": 103}
+{"category": "COMPONENT", "id": 2, "type": "HIGH_BIT", "x": 172.74240000000066, "y": 441.57759999999945}
+{"category": "COMPONENT", "id": 5, "type": "BUTTON", "x": 592.8000000000005, "y": 698.1179473599998}
+{"category": "COMPONENT", "id": 8, "type": "BUTTON", "x": 592.7999999999994, "y": 530.2000000000003}
+{"category": "COMPONENT", "id": 15, "type": "BUTTON", "x": 592.2000000000003, "y": 854.4000000000001}
+{"category": "COMPONENT", "id": 19, "type": "BUTTON", "x": 592.7296000000007, "y": 138.7487999999998}
+{"category": "COMPONENT", "id": 22, "type": "BUTTON", "x": 592.7296, "y": 297.1487999999999}
+{"category": "COMPONENT", "id": 40, "type": "NOR", "x": 1177.7936000000034, "y": 532.8527999999988}
+{"category": "COMPONENT", "id": 47, "type": "OR", "x": 892.4272000000002, "y": 531.547199999999}
+{"category": "COMPONENT", "id": 54, "type": "NOR", "x": 892.7039999999996, "y": 674.2800000000005}
+{"category": "COMPONENT", "id": 58, "type": "AND", "x": 1177.6480000000026, "y": 674.2799999999996}
+{"category": "COMPONENT", "id": 66, "type": "NOR", "x": 892.3680000000002, "y": 813.9919999999993}
+{"category": "COMPONENT", "id": 70, "type": "AND", "x": 1176.960000000001, "y": 813.9920000000003}
+{"category": "COMPONENT", "id": 77, "type": "NOT", "x": 893.368, "y": 957.256}
+{"category": "COMPONENT", "id": 82, "type": "AND", "x": 893.3679999999998, "y": 1100.5200000000002}
+{"category": "COMPONENT", "id": 88, "type": "AND", "x": 1177.9599999999991, "y": 955.3200000000002}
+{"category": "COMPONENT", "id": 94, "type": "NOR", "x": 893.4800000000004, "y": 1243.9519999999995}
+{"category": "COMPONENT", "id": 100, "type": "AND", "x": 1177.4939473600002, "y": 1097.0240000000006}
+{"category": "COMPONENT", "id": 106, "type": "AND", "x": 893.4240000000002, "y": 1388.1839999999988}
+{"category": "COMPONENT", "id": 111, "type": "NOT", "x": 893.6919999999998, "y": 1530.6329600000001}
+{"category": "COMPONENT", "id": 116, "type": "AND", "x": 1177.1417600000004, "y": 1237.8129600000009}
+{"category": "COMPONENT", "id": 150, "type": "AND", "x": 1657.230260000003, "y": 155.79500080000022}
+{"category": "COMPONENT", "id": 156, "type": "AND", "x": 1657.2302600000035, "y": 302.33852671999995}
+{"category": "COMPONENT", "id": 162, "type": "AND", "x": 2405.537626400002, "y": 221.2718953600001}
+{"category": "COMPONENT", "id": 168, "type": "AND", "x": 1658.230260000001, "y": 595.4255785599998}
+{"category": "COMPONENT", "id": 177, "type": "AND", "x": 1658.2302599999998, "y": 448.88205264000004}
+{"category": "COMPONENT", "id": 185, "type": "OR", "x": 2405.5376264000015, "y": 368.8154212799997}
+{"category": "COMPONENT", "id": 191, "type": "AND", "x": 1657.2302600000028, "y": 888.5126304000003}
+{"category": "COMPONENT", "id": 195, "type": "AND", "x": 1657.23026, "y": 741.9691044799999}
+{"category": "COMPONENT", "id": 203, "type": "NOR", "x": 2405.537626400001, "y": 514.3589471999999}
+{"category": "COMPONENT", "id": 209, "type": "NAND", "x": 2406.537626400002, "y": 660.90247312}
+{"category": "COMPONENT", "id": 213, "type": "AND", "x": 1658.2302600000007, "y": 1181.5996822400007}
+{"category": "COMPONENT", "id": 217, "type": "AND", "x": 1658.2302600000005, "y": 1035.0561563200001}
+{"category": "COMPONENT", "id": 227, "type": "NAND", "x": 2132.158258720001, "y": 807.4459990400003}
+{"category": "COMPONENT", "id": 231, "type": "OR", "x": 2132.1582587200014, "y": 657.7845257599994}
+{"category": "COMPONENT", "id": 235, "type": "AND", "x": 2406.5376264000015, "y": 807.44599904}
+{"category": "COMPONENT", "id": 241, "type": "AND", "x": 1658.2302600000012, "y": 1475.6867340800004}
+{"category": "COMPONENT", "id": 245, "type": "AND", "x": 1657.230260000001, "y": 1329.143208160001}
+{"category": "COMPONENT", "id": 257, "type": "NAND", "x": 2405.537626400001, "y": 948.7536302399999}
+{"category": "COMPONENT", "id": 261, "type": "OR", "x": 2131.1582587200014, "y": 954.9895249600008}
+{"category": "COMPONENT", "id": 266, "type": "NAND", "x": 2131.1582587200014, "y": 1101.5330508800007}
+{"category": "COMPONENT", "id": 271, "type": "AND", "x": 1657.2302600000016, "y": 1768.7737859200006}
+{"category": "COMPONENT", "id": 275, "type": "AND", "x": 1657.230260000001, "y": 1622.2302600000012}
+{"category": "CONNECTION_POINT", "id": 1, "io": "OUTPUT", "parent_id": 2}
+{"category": "CONNECTION_POINT", "id": 3, "io": "INPUT", "parent_id": 5}
+{"category": "CONNECTION_POINT", "id": 4, "io": "OUTPUT", "parent_id": 5}
+{"category": "CONNECTION_POINT", "id": 6, "io": "INPUT", "parent_id": 8}
+{"category": "CONNECTION_POINT", "id": 7, "io": "OUTPUT", "parent_id": 8}
+{"category": "CONNECTION_POINT", "id": 13, "io": "INPUT", "parent_id": 15}
+{"category": "CONNECTION_POINT", "id": 14, "io": "OUTPUT", "parent_id": 15}
+{"category": "CONNECTION_POINT", "id": 17, "io": "INPUT", "parent_id": 19}
+{"category": "CONNECTION_POINT", "id": 18, "io": "OUTPUT", "parent_id": 19}
+{"category": "CONNECTION_POINT", "id": 20, "io": "INPUT", "parent_id": 22}
+{"category": "CONNECTION_POINT", "id": 21, "io": "OUTPUT", "parent_id": 22}
+{"category": "CONNECTION_POINT", "id": 37, "io": "INPUT", "parent_id": 40}
+{"category": "CONNECTION_POINT", "id": 38, "io": "INPUT", "parent_id": 40}
+{"category": "CONNECTION_POINT", "id": 39, "io": "OUTPUT", "parent_id": 40}
+{"category": "CONNECTION_POINT", "id": 44, "io": "INPUT", "parent_id": 47}
+{"category": "CONNECTION_POINT", "id": 45, "io": "INPUT", "parent_id": 47}
+{"category": "CONNECTION_POINT", "id": 46, "io": "OUTPUT", "parent_id": 47}
+{"category": "CONNECTION_POINT", "id": 51, "io": "INPUT", "parent_id": 54}
+{"category": "CONNECTION_POINT", "id": 52, "io": "INPUT", "parent_id": 54}
+{"category": "CONNECTION_POINT", "id": 53, "io": "OUTPUT", "parent_id": 54}
+{"category": "CONNECTION_POINT", "id": 55, "io": "INPUT", "parent_id": 58}
+{"category": "CONNECTION_POINT", "id": 56, "io": "INPUT", "parent_id": 58}
+{"category": "CONNECTION_POINT", "id": 57, "io": "OUTPUT", "parent_id": 58}
+{"category": "CONNECTION_POINT", "id": 63, "io": "INPUT", "parent_id": 66}
+{"category": "CONNECTION_POINT", "id": 64, "io": "INPUT", "parent_id": 66}
+{"category": "CONNECTION_POINT", "id": 65, "io": "OUTPUT", "parent_id": 66}
+{"category": "CONNECTION_POINT", "id": 67, "io": "INPUT", "parent_id": 70}
+{"category": "CONNECTION_POINT", "id": 68, "io": "INPUT", "parent_id": 70}
+{"category": "CONNECTION_POINT", "id": 69, "io": "OUTPUT", "parent_id": 70}
+{"category": "CONNECTION_POINT", "id": 75, "io": "INPUT", "parent_id": 77}
+{"category": "CONNECTION_POINT", "id": 76, "io": "OUTPUT", "parent_id": 77}
+{"category": "CONNECTION_POINT", "id": 79, "io": "INPUT", "parent_id": 82}
+{"category": "CONNECTION_POINT", "id": 80, "io": "INPUT", "parent_id": 82}
+{"category": "CONNECTION_POINT", "id": 81, "io": "OUTPUT", "parent_id": 82}
+{"category": "CONNECTION_POINT", "id": 85, "io": "INPUT", "parent_id": 88}
+{"category": "CONNECTION_POINT", "id": 86, "io": "INPUT", "parent_id": 88}
+{"category": "CONNECTION_POINT", "id": 87, "io": "OUTPUT", "parent_id": 88}
+{"category": "CONNECTION_POINT", "id": 91, "io": "INPUT", "parent_id": 94}
+{"category": "CONNECTION_POINT", "id": 92, "io": "INPUT", "parent_id": 94}
+{"category": "CONNECTION_POINT", "id": 93, "io": "OUTPUT", "parent_id": 94}
+{"category": "CONNECTION_POINT", "id": 97, "io": "INPUT", "parent_id": 100}
+{"category": "CONNECTION_POINT", "id": 98, "io": "INPUT", "parent_id": 100}
+{"category": "CONNECTION_POINT", "id": 99, "io": "OUTPUT", "parent_id": 100}
+{"category": "CONNECTION_POINT", "id": 103, "io": "INPUT", "parent_id": 106}
+{"category": "CONNECTION_POINT", "id": 104, "io": "INPUT", "parent_id": 106}
+{"category": "CONNECTION_POINT", "id": 105, "io": "OUTPUT", "parent_id": 106}
+{"category": "CONNECTION_POINT", "id": 109, "io": "INPUT", "parent_id": 111}
+{"category": "CONNECTION_POINT", "id": 110, "io": "OUTPUT", "parent_id": 111}
+{"category": "CONNECTION_POINT", "id": 113, "io": "INPUT", "parent_id": 116}
+{"category": "CONNECTION_POINT", "id": 114, "io": "INPUT", "parent_id": 116}
+{"category": "CONNECTION_POINT", "id": 115, "io": "OUTPUT", "parent_id": 116}
+{"category": "CONNECTION_POINT", "id": 147, "io": "INPUT", "parent_id": 150}
+{"category": "CONNECTION_POINT", "id": 148, "io": "INPUT", "parent_id": 150}
+{"category": "CONNECTION_POINT", "id": 149, "io": "OUTPUT", "parent_id": 150}
+{"category": "CONNECTION_POINT", "id": 153, "io": "INPUT", "parent_id": 156}
+{"category": "CONNECTION_POINT", "id": 154, "io": "INPUT", "parent_id": 156}
+{"category": "CONNECTION_POINT", "id": 155, "io": "OUTPUT", "parent_id": 156}
+{"category": "CONNECTION_POINT", "id": 159, "io": "INPUT", "parent_id": 162}
+{"category": "CONNECTION_POINT", "id": 160, "io": "INPUT", "parent_id": 162}
+{"category": "CONNECTION_POINT", "id": 161, "io": "OUTPUT", "parent_id": 162}
+{"category": "CONNECTION_POINT", "id": 165, "io": "INPUT", "parent_id": 168}
+{"category": "CONNECTION_POINT", "id": 166, "io": "INPUT", "parent_id": 168}
+{"category": "CONNECTION_POINT", "id": 167, "io": "OUTPUT", "parent_id": 168}
+{"category": "CONNECTION_POINT", "id": 174, "io": "INPUT", "parent_id": 177}
+{"category": "CONNECTION_POINT", "id": 175, "io": "INPUT", "parent_id": 177}
+{"category": "CONNECTION_POINT", "id": 176, "io": "OUTPUT", "parent_id": 177}
+{"category": "CONNECTION_POINT", "id": 182, "io": "INPUT", "parent_id": 185}
+{"category": "CONNECTION_POINT", "id": 183, "io": "INPUT", "parent_id": 185}
+{"category": "CONNECTION_POINT", "id": 184, "io": "OUTPUT", "parent_id": 185}
+{"category": "CONNECTION_POINT", "id": 188, "io": "INPUT", "parent_id": 191}
+{"category": "CONNECTION_POINT", "id": 189, "io": "INPUT", "parent_id": 191}
+{"category": "CONNECTION_POINT", "id": 190, "io": "OUTPUT", "parent_id": 191}
+{"category": "CONNECTION_POINT", "id": 192, "io": "INPUT", "parent_id": 195}
+{"category": "CONNECTION_POINT", "id": 193, "io": "INPUT", "parent_id": 195}
+{"category": "CONNECTION_POINT", "id": 194, "io": "OUTPUT", "parent_id": 195}
+{"category": "CONNECTION_POINT", "id": 200, "io": "INPUT", "parent_id": 203}
+{"category": "CONNECTION_POINT", "id": 201, "io": "INPUT", "parent_id": 203}
+{"category": "CONNECTION_POINT", "id": 202, "io": "OUTPUT", "parent_id": 203}
+{"category": "CONNECTION_POINT", "id": 206, "io": "INPUT", "parent_id": 209}
+{"category": "CONNECTION_POINT", "id": 207, "io": "INPUT", "parent_id": 209}
+{"category": "CONNECTION_POINT", "id": 208, "io": "OUTPUT", "parent_id": 209}
+{"category": "CONNECTION_POINT", "id": 210, "io": "INPUT", "parent_id": 213}
+{"category": "CONNECTION_POINT", "id": 211, "io": "INPUT", "parent_id": 213}
+{"category": "CONNECTION_POINT", "id": 212, "io": "OUTPUT", "parent_id": 213}
+{"category": "CONNECTION_POINT", "id": 214, "io": "INPUT", "parent_id": 217}
+{"category": "CONNECTION_POINT", "id": 215, "io": "INPUT", "parent_id": 217}
+{"category": "CONNECTION_POINT", "id": 216, "io": "OUTPUT", "parent_id": 217}
+{"category": "CONNECTION_POINT", "id": 224, "io": "INPUT", "parent_id": 227}
+{"category": "CONNECTION_POINT", "id": 225, "io": "INPUT", "parent_id": 227}
+{"category": "CONNECTION_POINT", "id": 226, "io": "OUTPUT", "parent_id": 227}
+{"category": "CONNECTION_POINT", "id": 228, "io": "INPUT", "parent_id": 231}
+{"category": "CONNECTION_POINT", "id": 229, "io": "INPUT", "parent_id": 231}
+{"category": "CONNECTION_POINT", "id": 230, "io": "OUTPUT", "parent_id": 231}
+{"category": "CONNECTION_POINT", "id": 232, "io": "INPUT", "parent_id": 235}
+{"category": "CONNECTION_POINT", "id": 233, "io": "INPUT", "parent_id": 235}
+{"category": "CONNECTION_POINT", "id": 234, "io": "OUTPUT", "parent_id": 235}
+{"category": "CONNECTION_POINT", "id": 238, "io": "INPUT", "parent_id": 241}
+{"category": "CONNECTION_POINT", "id": 239, "io": "INPUT", "parent_id": 241}
+{"category": "CONNECTION_POINT", "id": 240, "io": "OUTPUT", "parent_id": 241}
+{"category": "CONNECTION_POINT", "id": 242, "io": "INPUT", "parent_id": 245}
+{"category": "CONNECTION_POINT", "id": 243, "io": "INPUT", "parent_id": 245}
+{"category": "CONNECTION_POINT", "id": 244, "io": "OUTPUT", "parent_id": 245}
+{"category": "CONNECTION_POINT", "id": 254, "io": "INPUT", "parent_id": 257}
+{"category": "CONNECTION_POINT", "id": 255, "io": "INPUT", "parent_id": 257}
+{"category": "CONNECTION_POINT", "id": 256, "io": "OUTPUT", "parent_id": 257}
+{"category": "CONNECTION_POINT", "id": 258, "io": "INPUT", "parent_id": 261}
+{"category": "CONNECTION_POINT", "id": 259, "io": "INPUT", "parent_id": 261}
+{"category": "CONNECTION_POINT", "id": 260, "io": "OUTPUT", "parent_id": 261}
+{"category": "CONNECTION_POINT", "id": 263, "io": "INPUT", "parent_id": 266}
+{"category": "CONNECTION_POINT", "id": 264, "io": "INPUT", "parent_id": 266}
+{"category": "CONNECTION_POINT", "id": 265, "io": "OUTPUT", "parent_id": 266}
+{"category": "CONNECTION_POINT", "id": 268, "io": "INPUT", "parent_id": 271}
+{"category": "CONNECTION_POINT", "id": 269, "io": "INPUT", "parent_id": 271}
+{"category": "CONNECTION_POINT", "id": 270, "io": "OUTPUT", "parent_id": 271}
+{"category": "CONNECTION_POINT", "id": 272, "io": "INPUT", "parent_id": 275}
+{"category": "CONNECTION_POINT", "id": 273, "io": "INPUT", "parent_id": 275}
+{"category": "CONNECTION_POINT", "id": 274, "io": "OUTPUT", "parent_id": 275}
+{"category": "CONNECTION", "id": 9, "p1_id": 1, "p2_id": 6}
+{"category": "CONNECTION", "id": 10, "p1_id": 1, "p2_id": 3}
+{"category": "CONNECTION", "id": 16, "p1_id": 1, "p2_id": 13}
+{"category": "CONNECTION", "id": 25, "p1_id": 17, "p2_id": 1}
+{"category": "CONNECTION", "id": 26, "p1_id": 1, "p2_id": 20}
+{"category": "CONNECTION", "id": 43, "p1_id": 14, "p2_id": 38}
+{"category": "CONNECTION", "id": 48, "p1_id": 46, "p2_id": 37}
+{"category": "CONNECTION", "id": 49, "p1_id": 7, "p2_id": 44}
+{"category": "CONNECTION", "id": 50, "p1_id": 4, "p2_id": 45}
+{"category": "CONNECTION", "id": 59, "p1_id": 7, "p2_id": 55}
+{"category": "CONNECTION", "id": 60, "p1_id": 4, "p2_id": 51}
+{"category": "CONNECTION", "id": 61, "p1_id": 14, "p2_id": 52}
+{"category": "CONNECTION", "id": 62, "p1_id": 53, "p2_id": 56}
+{"category": "CONNECTION", "id": 71, "p1_id": 7, "p2_id": 63}
+{"category": "CONNECTION", "id": 72, "p1_id": 14, "p2_id": 64}
+{"category": "CONNECTION", "id": 73, "p1_id": 65, "p2_id": 68}
+{"category": "CONNECTION", "id": 74, "p1_id": 4, "p2_id": 67}
+{"category": "CONNECTION", "id": 78, "p1_id": 14, "p2_id": 75}
+{"category": "CONNECTION", "id": 83, "p1_id": 7, "p2_id": 79}
+{"category": "CONNECTION", "id": 84, "p1_id": 4, "p2_id": 80}
+{"category": "CONNECTION", "id": 89, "p1_id": 76, "p2_id": 85}
+{"category": "CONNECTION", "id": 90, "p1_id": 81, "p2_id": 86}
+{"category": "CONNECTION", "id": 95, "p1_id": 7, "p2_id": 91}
+{"category": "CONNECTION", "id": 96, "p1_id": 4, "p2_id": 92}
+{"category": "CONNECTION", "id": 101, "p1_id": 14, "p2_id": 97}
+{"category": "CONNECTION", "id": 102, "p1_id": 93, "p2_id": 98}
+{"category": "CONNECTION", "id": 107, "p1_id": 7, "p2_id": 103}
+{"category": "CONNECTION", "id": 108, "p1_id": 14, "p2_id": 104}
+{"category": "CONNECTION", "id": 112, "p1_id": 4, "p2_id": 109}
+{"category": "CONNECTION", "id": 117, "p1_id": 110, "p2_id": 114}
+{"category": "CONNECTION", "id": 118, "p1_id": 105, "p2_id": 113}
+{"category": "CONNECTION", "id": 151, "p1_id": 18, "p2_id": 147}
+{"category": "CONNECTION", "id": 152, "p1_id": 39, "p2_id": 148}
+{"category": "CONNECTION", "id": 157, "p1_id": 21, "p2_id": 153}
+{"category": "CONNECTION", "id": 158, "p1_id": 39, "p2_id": 154}
+{"category": "CONNECTION", "id": 163, "p1_id": 149, "p2_id": 159}
+{"category": "CONNECTION", "id": 164, "p1_id": 155, "p2_id": 160}
+{"category": "CONNECTION", "id": 178, "p1_id": 57, "p2_id": 175}
+{"category": "CONNECTION", "id": 179, "p1_id": 57, "p2_id": 166}
+{"category": "CONNECTION", "id": 180, "p1_id": 18, "p2_id": 174}
+{"category": "CONNECTION", "id": 181, "p1_id": 21, "p2_id": 165}
+{"category": "CONNECTION", "id": 186, "p1_id": 176, "p2_id": 182}
+{"category": "CONNECTION", "id": 187, "p1_id": 167, "p2_id": 183}
+{"category": "CONNECTION", "id": 196, "p1_id": 69, "p2_id": 193}
+{"category": "CONNECTION", "id": 197, "p1_id": 69, "p2_id": 189}
+{"category": "CONNECTION", "id": 198, "p1_id": 18, "p2_id": 192}
+{"category": "CONNECTION", "id": 199, "p1_id": 21, "p2_id": 188}
+{"category": "CONNECTION", "id": 204, "p1_id": 194, "p2_id": 200}
+{"category": "CONNECTION", "id": 205, "p1_id": 190, "p2_id": 201}
+{"category": "CONNECTION", "id": 218, "p1_id": 87, "p2_id": 215}
+{"category": "CONNECTION", "id": 219, "p1_id": 87, "p2_id": 211}
+{"category": "CONNECTION", "id": 220, "p1_id": 18, "p2_id": 214}
+{"category": "CONNECTION", "id": 221, "p1_id": 21, "p2_id": 210}
+{"category": "CONNECTION", "id": 222, "p1_id": 216, "p2_id": 206}
+{"category": "CONNECTION", "id": 223, "p1_id": 212, "p2_id": 207}
+{"category": "CONNECTION", "id": 236, "p1_id": 230, "p2_id": 232}
+{"category": "CONNECTION", "id": 237, "p1_id": 226, "p2_id": 233}
+{"category": "CONNECTION", "id": 246, "p1_id": 244, "p2_id": 228}
+{"category": "CONNECTION", "id": 247, "p1_id": 244, "p2_id": 224}
+{"category": "CONNECTION", "id": 248, "p1_id": 240, "p2_id": 229}
+{"category": "CONNECTION", "id": 249, "p1_id": 240, "p2_id": 225}
+{"category": "CONNECTION", "id": 250, "p1_id": 99, "p2_id": 243}
+{"category": "CONNECTION", "id": 251, "p1_id": 99, "p2_id": 239}
+{"category": "CONNECTION", "id": 252, "p1_id": 18, "p2_id": 242}
+{"category": "CONNECTION", "id": 253, "p1_id": 21, "p2_id": 238}
+{"category": "CONNECTION", "id": 262, "p1_id": 260, "p2_id": 254}
+{"category": "CONNECTION", "id": 267, "p1_id": 265, "p2_id": 255}
+{"category": "CONNECTION", "id": 276, "p1_id": 115, "p2_id": 273}
+{"category": "CONNECTION", "id": 277, "p1_id": 115, "p2_id": 269}
+{"category": "CONNECTION", "id": 278, "p1_id": 18, "p2_id": 272}
+{"category": "CONNECTION", "id": 279, "p1_id": 21, "p2_id": 268}
+{"category": "CONNECTION", "id": 280, "p1_id": 274, "p2_id": 258}
+{"category": "CONNECTION", "id": 281, "p1_id": 274, "p2_id": 263}
+{"category": "CONNECTION", "id": 282, "p1_id": 270, "p2_id": 259}
+{"category": "CONNECTION", "id": 283, "p1_id": 270, "p2_id": 264}

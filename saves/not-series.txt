@@ -1,0 +1,55 @@
+{"scale_factor": 2.8344976000000015, "x_offset": -16, "y_offset": 235}
+{"category": "COMPONENT", "id": 3, "type": "BUTTON", "x": 561.6388256000002, "y": 531.2069856000018}
+{"category": "COMPONENT", "id": 5, "type": "HIGH_BIT", "x": 309.5999999999999, "y": 378.2}
+{"category": "COMPONENT", "id": 9, "type": "NOT", "x": 1582.2627200000009, "y": 533.9238400000004}
+{"category": "COMPONENT", "id": 12, "type": "NOT", "x": 1332.0000000000011, "y": 393.59999999999997}
+{"category": "COMPONENT", "id": 15, "type": "NOT", "x": 1074.4000000000008, "y": 529.5999999999999}
+{"category": "COMPONENT", "id": 18, "type": "NOT", "x": 821.6000000000001, "y": 375.99999999999983}
+{"category": "COMPONENT", "id": 25, "type": "NOT", "x": 2312.9920000000043, "y": 384.00159999999977}
+{"category": "COMPONENT", "id": 28, "type": "NOT", "x": 2072.3472000000006, "y": 528.8143999999999}
+{"category": "COMPONENT", "id": 31, "type": "NOT", "x": 1818.9248000000005, "y": 384.0016000000005}
+{"category": "COMPONENT", "id": 34, "type": "NOT", "x": 2561.188799999998, "y": 531.8512000000005}
+{"category": "COMPONENT", "id": 363, "type": "NOT", "x": 3297.565304000001, "y": 394.0746896000002}
+{"category": "COMPONENT", "id": 366, "type": "NOT", "x": 3050.9640128000033, "y": 547.1375600000003}
+{"category": "COMPONENT", "id": 369, "type": "NOT", "x": 2810.0317167999997, "y": 391.24019200000026}
+{"category": "COMPONENT", "id": 375, "type": "NOT", "x": 3544.1665952000017, "y": 555.6410528000002}
+{"category": "CONNECTION_POINT", "id": 1, "io": "INPUT", "parent_id": 3}
+{"category": "CONNECTION_POINT", "id": 2, "io": "OUTPUT", "parent_id": 3}
+{"category": "CONNECTION_POINT", "id": 4, "io": "OUTPUT", "parent_id": 5}
+{"category": "CONNECTION_POINT", "id": 7, "io": "INPUT", "parent_id": 9}
+{"category": "CONNECTION_POINT", "id": 8, "io": "OUTPUT", "parent_id": 9}
+{"category": "CONNECTION_POINT", "id": 10, "io": "INPUT", "parent_id": 12}
+{"category": "CONNECTION_POINT", "id": 11, "io": "OUTPUT", "parent_id": 12}
+{"category": "CONNECTION_POINT", "id": 13, "io": "INPUT", "parent_id": 15}
+{"category": "CONNECTION_POINT", "id": 14, "io": "OUTPUT", "parent_id": 15}
+{"category": "CONNECTION_POINT", "id": 16, "io": "INPUT", "parent_id": 18}
+{"category": "CONNECTION_POINT", "id": 17, "io": "OUTPUT", "parent_id": 18}
+{"category": "CONNECTION_POINT", "id": 23, "io": "INPUT", "parent_id": 25}
+{"category": "CONNECTION_POINT", "id": 24, "io": "OUTPUT", "parent_id": 25}
+{"category": "CONNECTION_POINT", "id": 26, "io": "INPUT", "parent_id": 28}
+{"category": "CONNECTION_POINT", "id": 27, "io": "OUTPUT", "parent_id": 28}
+{"category": "CONNECTION_POINT", "id": 29, "io": "INPUT", "parent_id": 31}
+{"category": "CONNECTION_POINT", "id": 30, "io": "OUTPUT", "parent_id": 31}
+{"category": "CONNECTION_POINT", "id": 32, "io": "INPUT", "parent_id": 34}
+{"category": "CONNECTION_POINT", "id": 33, "io": "OUTPUT", "parent_id": 34}
+{"category": "CONNECTION_POINT", "id": 361, "io": "INPUT", "parent_id": 363}
+{"category": "CONNECTION_POINT", "id": 362, "io": "OUTPUT", "parent_id": 363}
+{"category": "CONNECTION_POINT", "id": 364, "io": "INPUT", "parent_id": 366}
+{"category": "CONNECTION_POINT", "id": 365, "io": "OUTPUT", "parent_id": 366}
+{"category": "CONNECTION_POINT", "id": 367, "io": "INPUT", "parent_id": 369}
+{"category": "CONNECTION_POINT", "id": 368, "io": "OUTPUT", "parent_id": 369}
+{"category": "CONNECTION_POINT", "id": 373, "io": "INPUT", "parent_id": 375}
+{"category": "CONNECTION_POINT", "id": 374, "io": "OUTPUT", "parent_id": 375}
+{"category": "CONNECTION", "id": 6, "p1_id": 4, "p2_id": 1}
+{"category": "CONNECTION", "id": 19, "p1_id": 2, "p2_id": 16}
+{"category": "CONNECTION", "id": 20, "p1_id": 17, "p2_id": 13}
+{"category": "CONNECTION", "id": 21, "p1_id": 14, "p2_id": 10}
+{"category": "CONNECTION", "id": 22, "p1_id": 11, "p2_id": 7}
+{"category": "CONNECTION", "id": 35, "p1_id": 8, "p2_id": 29}
+{"category": "CONNECTION", "id": 36, "p1_id": 30, "p2_id": 26}
+{"category": "CONNECTION", "id": 37, "p1_id": 27, "p2_id": 23}
+{"category": "CONNECTION", "id": 38, "p1_id": 24, "p2_id": 32}
+{"category": "CONNECTION", "id": 370, "p1_id": 33, "p2_id": 367}
+{"category": "CONNECTION", "id": 371, "p1_id": 368, "p2_id": 364}
+{"category": "CONNECTION", "id": 372, "p1_id": 365, "p2_id": 361}
+{"category": "CONNECTION", "id": 376, "p1_id": 362, "p2_id": 373}
