@@ -48,6 +48,8 @@ def save(filename):
         filename=filename.split(".")[0]
     filename+=".txt"
     with open("saves/{0}".format(filename),"w+") as f:
+        json.dump({"scale_factor":drawing.scale_factor,"x_offset":drawing.x_offset,"y_offset":drawing.y_offset},f)
+        f.write("\n")
         for component in drawing.components:
             json.dump(component.dump(),f)
             f.write("\n")
@@ -67,14 +69,22 @@ def load(filename):
     conn_points=[]
     connections=[]
     with open("saves/{0}".format(filename),"r") as f:
+        line_counter=0
         for line in f:
-            j=json.loads(line)
-            if j['category']=="COMPONENT":
-                components.append(j)
-            if j['category']=="CONNECTION_POINT":
-                conn_points.append(j)
-            if j['category']=="CONNECTION":
-                connections.append(j)
+            line_counter+=1
+            if line_counter==1:
+                view_data=json.loads(line)
+                drawing.scale_factor=view_data['scale_factor']
+                drawing.x_offset=view_data['x_offset']
+                drawing.y_offset=view_data['y_offset']
+            else:
+                j=json.loads(line)
+                if j['category']=="COMPONENT":
+                    components.append(j)
+                if j['category']=="CONNECTION_POINT":
+                    conn_points.append(j)
+                if j['category']=="CONNECTION":
+                    connections.append(j)
         f.close()
     typeStringLookup={
         "AND":drawing.AND,

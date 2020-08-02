@@ -4,6 +4,8 @@ import pygame
 import pygame.gfxdraw
 import asyncio
 import math
+import os
+import datetime
 pygame.display.init()
 pygame.font.init()
 
@@ -34,7 +36,8 @@ nand_surf=pygame.image.load("assets/NAND.png")
 nor_surf=pygame.image.load("assets/NOR.png")
 button_up_surf=pygame.Surface((int(height/7),int(1.66*(height/7))))
 button_down_surf=pygame.Surface((int(height/7),int(1.66*(height/7))))
-pygame.draw.rect(button_up_surf,(0,0,0),pygame.Rect(int(height/28)-10,int(1.66*(height/28))-10,int(height/14)+20,int(1.66*(height/14))+20),4)
+pygame.draw.rect(button_up_surf,(0,0,0),pygame.Rect(int(height/28)-10.5,int(1.66*(height/28))-10.5,int(height/14)+20.5,int(1.66*(height/14))+20.5),4)
+pygame.gfxdraw.rectangle(button_up_surf,pygame.Rect(int(height/28)-11,int(1.66*(height/28))-11,int(height/14)+21,int(1.66*(height/14))+21),(0,0,0,255))
 pygame.gfxdraw.box(button_down_surf,pygame.Rect(int(height/28)-10,int(1.66*(height/28))-10,int(height/14)+20,int(1.66*(height/14))+20),(0,0,0,255))
 high_bit_surf=pygame.image.load("assets/ONE.png")
 save_surf=pygame.image.load("assets/SAVE.png")
@@ -71,7 +74,8 @@ class ConnectionPoint:
     def draw(self):
        center=(int((self.parent_obj.x+self.rel_x)/scale_factor)+x_offset,int((self.parent_obj.y+self.rel_y)/scale_factor)+y_offset)
        color=(0,0,0) if (self.state==False) else (0,255,0)
-       pygame.draw.circle(screen,color,center,self.parent_obj.height/(12*scale_factor))
+       pygame.draw.circle(screen,color,center,0.5+(self.parent_obj.height/(12*scale_factor)))
+       pygame.gfxdraw.aacircle(screen,center[0],center[1],1+int(self.parent_obj.height/(12*scale_factor)),(0,0,0))
     def dump(self):
         return {
             "category":"CONNECTION_POINT",
@@ -117,12 +121,22 @@ class Prompt:
         self.height=height
         self.title=title
         self.type=type
-        self.input="" if (save_path==None) else save_path
+        self.file_index=0
+        self.file_array=[]
+        for file in os.walk("saves"):
+            self.file_array.append(file)
+        self.file_array=self.file_array[0][2][1:]
+        for i in range(len(self.file_array)):
+            self.file_array[i]=self.file_array[i].split(".txt")[0]
+        if self.type==PromptType.TEXT:
+            self.input="" if (save_path==None) else save_path
+        else:
+            self.input=self.file_array[0]
     def draw(self):
         pygame.gfxdraw.box(screen,pygame.Rect(int((width/2)-(self.width/2)),int((height/2)-(self.height/2)),self.width,self.height),(0,0,0,200))
+        pygame.draw.rect(screen,(0,0,0),pygame.Rect(int((width/2)-(self.width/2)),int((height/2)-(self.height/2)),self.width,self.height),3)
         screen.blit(small_font.render(self.title,True,(255,255,255)),(int((width/2)-int(small_font.render(self.title,True,(255,255,255)).get_size()[0]/2)),int((height/2)-(self.height/2)+30)))
         screen.blit(font.render(self.input,True,(0,0,0),(255,255,255)),pygame.draw.rect(screen,(255,255,255),pygame.Rect(int((width/2)-(self.width/2)+20),int((height/2)+(self.height/2)-(self.height/3)-30),self.width-40,self.height/3)))
-        pygame.draw.rect(screen,(0,0,0),pygame.Rect(int((width/2)-(self.width/2)),int((height/2)-(self.height/2)),self.width,self.height),3)
         pygame.draw.rect(screen,(0,0,0),pygame.Rect(int((width/2)-(self.width/2)+20),int((height/2)+(self.height/2)-(self.height/3)-30),self.width-40,self.height/3),3)
     def get_input(self):
         if self.type==PromptType.TEXT:
@@ -142,6 +156,24 @@ class Prompt:
                                 if font.render(self.input+key,True,(0,0,0),(255,255,255)).get_size()[0] <= self.width-40:
                                     self.input+=key
                                     redraw()
+        if self.type==PromptType.LIST:
+            while True:
+                for event in pygame.event.get():
+                    if event.type==pygame.KEYDOWN:
+                        if event.key==1073741904:
+                            if self.file_index>0:
+                                self.file_index-=1
+                                self.input=self.file_array[self.file_index]
+                                redraw()
+                        if event.key==1073741903:
+                            if self.file_index<len(self.file_array)-1:
+                                self.file_index+=1
+                                self.input=self.file_array[self.file_index]
+                                redraw()
+                        if event.key==13:
+                            return self.input
+                        if event.key==27:
+                            return None
 
 class Menu:
     def __init__(self,orientation,x,y,width,height):
@@ -163,10 +195,10 @@ class Menu:
         for component in self.components:
             if self.orientation==orientation.HORIZONTAL:
                 try:
-                    pos_offset=int(component.width*len(self.components)/2)
+                    pos_offset=component.width*len(self.components)/2
                 except ZeroDivisionError:
                     pos_offset=0
-                if pos_offset%2==0:
+                if len(self.components)%2==0:
                     pos_offset-=component.width/2
                 counter+=1
                 comp_x=self.x-pos_offset+(counter*(component.width))
@@ -176,10 +208,10 @@ class Menu:
                         return component
             if self.orientation==orientation.VERTICAL:
                 try:
-                    pos_offset=int(component.height*len(self.components)/2)
+                    pos_offset=component.height*len(self.components)/2
                 except ZeroDivisionError:
                     pos_offset=0
-                if pos_offset%2==0:
+                if len(self.components)%2==0:
                     pos_offset-=component.height/2
                 counter+=1
                 comp_y=self.y-pos_offset+(counter*(component.height))
@@ -203,22 +235,22 @@ class MenuComponent():
     def draw(self,position):
         if self.menu.orientation == orientation.HORIZONTAL:
             try:
-                pos_offset=int(self.width*len(self.menu.components)/2)
+                pos_offset=self.width*len(self.menu.components)/2
             except ZeroDivisionError:
                 pos_offset=0
-            if pos_offset%2==0:
-                pos_offset-=int(self.width/2)
+            if len(self.menu.components)%2==0:
+                pos_offset-=self.width/2
             if self.menu.x-pos_offset+(position*(self.width))-int(self.width/2)>0:
                 screen.blit(self.image,pygame.draw.rect(screen,(255,255,255),pygame.Rect(self.menu.x-pos_offset+(position*(self.width))-int(self.width/2),self.menu.y-int(self.height/2),self.width,self.height)))
             pygame.draw.rect(screen,(0,0,0),pygame.Rect(self.menu.x-pos_offset+(position*(self.width))-int(self.width/2),self.menu.y-int(self.height/2),self.width,self.height),3)
         if self.menu.orientation==orientation.VERTICAL:
             try:
-                pos_offset=int(self.height*len(self.menu.components)/2)
+                pos_offset=self.height*len(self.menu.components)/2
             except ZeroDivisionError:
                 pos_offset=0
-            if pos_offset%2==0:
-                pos_offset-=int(self.height/2)
-            if self.menu.y-pos_offset+(position*(self.width))-int(self.height/2)>0:
+            if len(self.menu.components)%2==0:
+                pos_offset-=self.height/2
+            if self.menu.y-pos_offset+(position*(self.height))-int(self.height/2)>0:
                 screen.blit(self.image,pygame.draw.rect(screen,(255,255,255),pygame.Rect(self.menu.x-int(self.width/2),self.menu.y-pos_offset+(position*(self.height))-int(self.height/2),self.width,self.height)))
             pygame.draw.rect(screen,(0,0,0),pygame.Rect(self.menu.x-int(self.width/2),self.menu.y-pos_offset+(position*(self.height))-int(self.height/2),self.width,self.height),3)
 
@@ -261,6 +293,13 @@ class Component:
             connector.state=False
             conn_points.remove(connector)
         components.remove(self)
+    def draw(self):
+        self.draw_children()
+        self.image=pygame.transform.smoothscale(self.surf,(int(self.width/scale_factor),int(self.height/scale_factor)))
+        surface_rect=pygame.draw.rect(screen,self.background_color,pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor)))
+        if int((self.x-(self.width/2))/scale_factor)+x_offset>0 and int((self.y-(self.height/2))/scale_factor)+y_offset>0:
+            screen.blit(self.image,surface_rect)
+        pygame.draw.rect(screen,(0,0,0),pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor)),3)
     def dump(self):
         return {
             "category":"COMPONENT",
@@ -276,6 +315,7 @@ class AND(Component):
         self.width=comp_width
         self.height=comp_height
         self.image=pygame.transform.smoothscale(and_surf,(self.width,self.height))
+        self.surf=and_surf
         self.inputs=[
             ConnectionPoint(-self.width/2,-self.height/4,IO.INPUT,self),
             ConnectionPoint(-self.width/2,self.height/4,IO.INPUT,self)
@@ -284,12 +324,7 @@ class AND(Component):
             ConnectionPoint(self.width/2,0,IO.OUTPUT,self)
         ]
         super().__init__(x,y,self.inputs,self.outputs,**kwargs)
-    def draw(self):
-        super().draw_children()
-        self.image=pygame.transform.smoothscale(and_surf,(int(self.width/scale_factor),int(self.height/scale_factor)))
-        if int((self.x-(self.width/2))/scale_factor)+x_offset>0:
-            screen.blit(self.image,pygame.draw.rect(screen,self.background_color,pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor))))
-        pygame.draw.rect(screen,(0,0,0),pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor)),3)
+    
 
 class NAND(Component):
     def __init__(self,x,y,**kwargs):
@@ -297,6 +332,7 @@ class NAND(Component):
         self.width=comp_width
         self.height=comp_height
         self.image=pygame.transform.smoothscale(nand_surf,(self.width,self.height))
+        self.surf=nand_surf
         self.inputs=[
             ConnectionPoint(-self.width/2,-self.height/4,IO.INPUT,self),
             ConnectionPoint(-self.width/2,self.height/4,IO.INPUT,self)
@@ -305,12 +341,6 @@ class NAND(Component):
             ConnectionPoint(self.width/2,0,IO.OUTPUT,self)
         ]
         super().__init__(x,y,self.inputs,self.outputs,**kwargs)
-    def draw(self):
-        super().draw_children()
-        self.image=pygame.transform.smoothscale(nand_surf,(int(self.width/scale_factor),int(self.height/scale_factor)))
-        if int((self.x-(self.width/2))/scale_factor)+x_offset>0:
-            screen.blit(self.image,pygame.draw.rect(screen,self.background_color,pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor))))
-        pygame.draw.rect(screen,(0,0,0),pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor)),3)
 
 class OR(Component):
     def __init__(self,x,y,**kwargs):
@@ -318,6 +348,7 @@ class OR(Component):
         self.width=comp_width
         self.height=comp_height
         self.image=pygame.transform.smoothscale(or_surf,(self.width,self.height))
+        self.surf=or_surf
         self.inputs=[
             ConnectionPoint(-self.width/2,-self.height/4,IO.INPUT,self),
             ConnectionPoint(-self.width/2,self.height/4,IO.INPUT,self)
@@ -326,19 +357,14 @@ class OR(Component):
             ConnectionPoint(self.width/2,0,IO.OUTPUT,self)
         ]
         super().__init__(x,y,self.inputs,self.outputs,**kwargs)
-    def draw(self):
-        super().draw_children()
-        self.image=pygame.transform.smoothscale(or_surf,(int(self.width/scale_factor),int(self.height/scale_factor)))
-        if int((self.x-(self.width/2))/scale_factor)+x_offset>0:
-            screen.blit(self.image,pygame.draw.rect(screen,self.background_color,pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor))))
-        pygame.draw.rect(screen,(0,0,0),pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor)),3)
-
+ 
 class NOR(Component):
     def __init__(self,x,y,**kwargs):
         self.background_color=(255,255,255)
         self.width=comp_width
         self.height=comp_height
         self.image=pygame.transform.smoothscale(nor_surf,(self.width,self.height))
+        self.surf=nor_surf
         self.inputs=[
             ConnectionPoint(-self.width/2,-self.height/4,IO.INPUT,self),
             ConnectionPoint(-self.width/2,self.height/4,IO.INPUT,self)
@@ -347,12 +373,6 @@ class NOR(Component):
             ConnectionPoint(self.width/2,0,IO.OUTPUT,self)
         ]
         super().__init__(x,y,self.inputs,self.outputs,**kwargs)
-    def draw(self):
-        super().draw_children()
-        self.image=pygame.transform.smoothscale(nor_surf,(int(self.width/scale_factor),int(self.height/scale_factor)))
-        if int((self.x-(self.width/2))/scale_factor)+x_offset>0:
-            screen.blit(self.image,pygame.draw.rect(screen,self.background_color,pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor))))
-        pygame.draw.rect(screen,(0,0,0),pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor)),3)
 
 class NOT(Component):
     def __init__(self,x,y,**kwargs):
@@ -360,6 +380,7 @@ class NOT(Component):
         self.width=comp_width
         self.height=comp_height
         self.image=pygame.transform.smoothscale(not_surf,(self.width,self.height))
+        self.surf=not_surf
         self.inputs=[
             ConnectionPoint(-self.width/2,0,IO.INPUT,self)
         ]
@@ -367,12 +388,6 @@ class NOT(Component):
             ConnectionPoint(self.width/2,0,IO.OUTPUT,self)
         ]
         super().__init__(x,y,self.inputs,self.outputs,**kwargs)
-    def draw(self):
-        super().draw_children()
-        self.image=pygame.transform.smoothscale(not_surf,(int(self.width/scale_factor),int(self.height/scale_factor)))
-        if int((self.x-(self.width/2))/scale_factor)+x_offset>0:
-            screen.blit(self.image,pygame.draw.rect(screen,self.background_color,pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor))))
-        pygame.draw.rect(screen,(0,0,0),pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor)),3)
 
 class BUTTON(Component):
     def __init__(self,x,y,**kwargs):
@@ -381,6 +396,7 @@ class BUTTON(Component):
         self.height=comp_height
         self.pressed=False
         self.image=pygame.transform.smoothscale(button_up_surf,(self.width,self.height))
+        self.surf=button_up_surf
         self.inputs=[
             ConnectionPoint(-self.width/2,0,IO.INPUT,self)
         ]
@@ -391,12 +407,10 @@ class BUTTON(Component):
     def draw(self):
         super().draw_children()
         if self.pressed:
-            self.image=pygame.transform.smoothscale(button_down_surf,(int(self.width/scale_factor),int(self.height/scale_factor)))
+            self.surf=button_down_surf
         else:
-            self.image=pygame.transform.smoothscale(button_up_surf,(int(self.width/scale_factor),int(self.height/scale_factor)))
-        if int((self.x-(self.width/2))/scale_factor)+x_offset>0:
-            screen.blit(self.image,pygame.draw.rect(screen,self.background_color,pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor))))
-        pygame.draw.rect(screen,(0,0,0),pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor)),3)
+            self.surf=button_up_surf
+        super().draw()
 
 class HIGH_BIT(Component):
     def __init__(self,x,y,**kwargs):
@@ -404,18 +418,13 @@ class HIGH_BIT(Component):
         self.width=comp_width
         self.height=comp_height
         self.image=pygame.transform.smoothscale(high_bit_surf,(self.width,self.height))
+        self.surf=high_bit_surf
         self.inputs=[]
         self.outputs=[
             ConnectionPoint(self.width/2,0,IO.OUTPUT,self)
         ]
         self.outputs[0].state=True
         super().__init__(x,y,self.inputs,self.outputs,**kwargs)
-    def draw(self):
-        super().draw_children()
-        self.image=pygame.transform.smoothscale(high_bit_surf,(int(self.width/scale_factor),int(self.height/scale_factor)))
-        if int((self.x-(self.width/2))/scale_factor)+x_offset>0:
-            screen.blit(self.image,pygame.draw.rect(screen,self.background_color,pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor))))
-        pygame.draw.rect(screen,(0,0,0),pygame.Rect(int((self.x-(self.width/2))/scale_factor)+x_offset,int((self.y-(self.height/2))/scale_factor)+y_offset,int(self.width/scale_factor),int(self.height/scale_factor)),3)
 
 def get_component_collision(x,y):
     for i in range(len(components)):
@@ -488,6 +497,10 @@ last_x=0
 last_y=0
 drag=[]
 moved=False
+last_w=width
+lsat_h=height
+last_resize=datetime.datetime.now()
+resized=True
 
 async def update_loop():
     global current_prompt
@@ -505,16 +518,31 @@ async def update_loop():
     global load_button
     global save_path
     global file_selection
+    global components
+    global conn_points
+    global connections
+    global last_w
+    global last_h
+    global last_resize
+    global resized
     while True:
         pygame.event.pump()
         if save_path != None:
             pygame.display.set_caption("BooleanNetworkSimulator - {0}".format(save_path))
         else:
             pygame.display.set_caption("BooleanNetworkSimulator")
-        for event in pygame.event.get():
-            if event.type==pygame.VIDEORESIZE:
-                width, height = event.dict['size']
+        if (datetime.datetime.now()-last_resize).microseconds>0 and resized:
+                resized=False
                 pygame.display.set_mode((width,height),pygame.RESIZABLE)
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                pygame.quit()
+                exit(0)
+            if event.type==pygame.VIDEORESIZE:
+                if event.dict['size'][0] != width or event.dict['size'][1] != height:
+                    resized=True
+                    width, height = event.dict['size']
+                    last_resize=datetime.datetime.now()
             if event.type==pygame.MOUSEBUTTONDOWN:
                 if event.button == 4:
                     scale_factor=scale_factor*1.1
@@ -540,10 +568,16 @@ async def update_loop():
                                 save_callback(save_path)
                             current_prompt=None
                         if component == load_button:
+                            current_prompt=Prompt(int(width/1.8),int(height/3),PromptType.LIST,"Select file to load:")
+                            redraw()
                             filename = current_prompt.get_input()
                             if filename != None:
                                 save_path=filename
+                                components=[]
+                                conn_points=[]
+                                connections=[]
                                 load_callback(save_path)
+                            current_prompt=None
                     if get_connector_collision(event.pos[0],event.pos[1]) != None:
                         connector=get_connector_collision(event.pos[0],event.pos[1])
                         if last_connector != None:
@@ -555,9 +589,13 @@ async def update_loop():
                     else:
                         last_connector=None
                 if pygame.mouse.get_pressed()[2]:
-                    if get_component_collision(event.pos[0],event.pos[1]) != None:
-                        component=get_component_collision(event.pos[0],event.pos[1])
-                        component.destroy()
+                    if len(drag)==0:
+                        if get_component_collision(event.pos[0],event.pos[1]) != None:
+                            component=get_component_collision(event.pos[0],event.pos[1])
+                            component.destroy()
+                    else:
+                        for dragged in drag:
+                            dragged.destroy()
             if event.type==pygame.MOUSEBUTTONUP:
                 if pygame.mouse.get_pressed(0):
                     if not moved:
@@ -602,9 +640,6 @@ async def update_loop():
                     drag=[]
                 last_x=0
                 last_y=0
-            if event.type==pygame.MOUSEBUTTONUP and event.button==2:
-                last_x_r=0
-                last_y_r=0
         await asyncio.sleep(1/framerate)
 
 async def draw_loop():
