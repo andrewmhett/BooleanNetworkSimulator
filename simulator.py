@@ -5,7 +5,13 @@ if len(sys.argv[1:])>1:
     print("Only one argument accepted as SAVE_PATH.")
     exit(-1)
 
-import drawing
+import platform
+
+if platform.system() == 'Darwin':
+    import macOS_drawing as drawing
+else:
+    import cross_drawing as drawing
+
 import asyncio
 
 if len(sys.argv[1:])==1:
